@@ -1,0 +1,71 @@
+:root {
+    /* Color Palette */
+    --background: #121212;
+    --primary: #1E1E1E;
+    --secondary: #555555;
+    --accent: #BB86FC;
+
+    --text-primary: #E0E0E0;
+    --text-secondary: #121212;
+
+    --successs : #03DAC5;
+    --warning : #FFB74D;
+    --error : #CF6679;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: var(--text-primary);
+}
+
+body {
+    background-color: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main {
+    width: 300px;
+    height: 496px;
+    background-color: var(--primary);
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.search-bar {
+    height: 40px;
+    position: relative;
+    /* border: 1px solid white; */
+}
+
+.search-input {
+    width: 100%;
+    height: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    border-radius: 10px;
+}
+
+
+.search-input::placeholder {
+    color: var(--secondary);
+}
+
+.search-input:hover {
+    border: 1px solid var(--secondary);
+}
+
+
+.search-btn {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    height: 24px;
+    cursor: pointer;
+}
