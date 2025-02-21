@@ -30,17 +30,19 @@ body {
 }
 
 main {
-    width: 300px;
+    width: 320px;
     height: 496px;
     background-color: var(--primary);
     border-radius: 10px;
     padding: 18px;
 }
 
+
+/* Search Bar Section */
 .search-bar {
     height: 40px;
     position: relative;
-    /* border: 1px solid white; */
+    margin-bottom: 30px;
 }
 
 .search-input {
@@ -68,4 +70,23 @@ main {
     top: 8px;
     height: 24px;
     cursor: pointer;
+}
+
+
+
+/* Location and Date Info Section */
+.location-date-container {
+    border: 1px solid;
+}
+
+.location-date-info {
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.location-date-logo {
+    margin-right: 10px;
 }
