@@ -36,9 +36,11 @@ main {
     border-radius: 10px;
     padding: 18px;
 }
+/* -------------------------------------------------------------------------- */
 
 
-/* Search Bar Section */
+
+/* --------------------------- Search Bar Section --------------------------- */
 .search-bar {
     height: 40px;
     position: relative;
@@ -54,7 +56,6 @@ main {
     border-radius: 10px;
 }
 
-
 .search-input::placeholder {
     color: var(--secondary);
 }
@@ -63,7 +64,6 @@ main {
     border: 1px solid var(--secondary);
 }
 
-
 .search-btn {
     position: absolute;
     right: 12px;
@@ -71,22 +71,44 @@ main {
     height: 24px;
     cursor: pointer;
 }
+/* -------------------------------------------------------------------------- */
 
 
 
-/* Location and Date Info Section */
+/* --------------------- Location and Date Info Section --------------------- */
 .location-date-container {
     border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 .location-date-info {
     /* border: 1px solid; */
     display: flex;
     align-items: center;
+    gap: 10px;
     font-size: 1.2rem;
-    margin-bottom: 10px;
+}
+/* -------------------------------------------------------------------------- */
+
+
+
+/* ------------------------- Weather Summary Section ------------------------ */
+.weather-summary-container {
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.location-date-logo {
-    margin-right: 10px;
+.weather-summary-img {
+    border: 1px solid;
 }
+
+.weather-summary-info {
+    border: 1px solid;
+}
+/* -------------------------------------------------------------------------- */
+
