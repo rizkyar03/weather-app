@@ -4,39 +4,85 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
     <title>Weather App</title>
   </head>
 
   <body>
     <main>
-      <section class="search-bar">
+      <header class="search-bar">
         <input class="search-input" type="text" placeholder="Search City..." />
-        <a class="search-btn" onclick="">
-          <img class="" src="assets/icons/icon-search-gray.svg" alt="" loading="lazy" />
+        <a class="search-btn" onclick=counter()>
+          <img class="" src="assets/icons/icon-search.svg" alt="" loading="lazy" />
         </a>
-      </section>
+      </header>
 
-      <section class="location-date-container">
-        <div class="location-date-info">
-          <img src="assets/icons/icon-location.svg" class="location-date-icon" alt="" />
-          <p>Jakarta</p>
-        </div>
-        <div class="location-date-info">
-          <img src="assets/icons/icon-date.svg" class="location-date-icon" alt="" />
-          <p>Monday, January 28th 2025</p>
-        </div>
-      </section>
+      <div class="main-wrapper">
+        <section class="location-date-container">
+          <div class="location-date-info">
+            <img src="assets/icons/icon-location.svg" class="location-date-icon" alt="" />
+            <h4>Jakarta, Indonesia</h4>
+          </div>
+          <div class="location-date-info">
+            <img src="assets/icons/icon-calendar.svg" class="location-date-icon" alt="" />
+            <h4>Monday, 28 January 2025</h4>
+          </div>
+        </section>
 
-      <section class="weather-summary-container">
-        <img src="assets/images/weather/clouds.svg" class="weather-summary-img" alt="" />
-        <div class="weather-summary-info">
-          <h1 class="temp-txt">32 &#xb0;C</h1>
-          <h3 class="condition-txt">Cloudy</h3>
-        </div>
-      </section>
-      <section class="weather-forecast-container"></section>
+        <section class="weather-summary-container">
+          <img src="assets/images/weather/clouds.svg" class="weather-summary-img" alt="" />
+          <div class="weather-summary-info">
+            <h1 class="temp-txt">32 &#xb0;C</h1>
+            <h3 class="summary-txt">Cloudy</h3>
+          </div>
+        </section>
+
+        <section class="weather-condition-container">
+          <div class="condition-item">
+            <img src="assets/icons/icon-humidity.svg" class="condition-icon" alt="" />
+            <div class="condition-info">
+              <h4>Humidity</h4>
+              <h4>58%</h4>
+            </div>
+          </div>
+          <div class="condition-item">
+            <img src="assets/icons/icon-wind.svg" class="condition-icon" alt="" />
+            <div class="condition-info">
+              <h4>Wind Speed</h4>
+              <h4>4 m/s</h4>
+            </div>
+          </div>
+        </section>
+
+        <section class="weather-forecast-container">
+          <div class="forecast-item">
+            <h5 class="forecast-item-date">14 Jan</h5>
+            <img src="assets/images/weather/thunderstorm.svg" class="forecast-item-img" alt="" />
+            <h5 class="forecast-item-temp">32 &#xb0;C</h5>
+          </div>
+          <div class="forecast-item">
+            <h5 class="forecast-item-date">14 Jan</h5>
+            <img src="assets/images/weather/thunderstorm.svg" class="forecast-item-img" alt="" />
+            <h5 class="forecast-item-temp">32 &#xb0;C</h5>
+          </div>
+          <div class="forecast-item">
+            <h5 class="forecast-item-date">14 Jan</h5>
+            <img src="assets/images/weather/thunderstorm.svg" class="forecast-item-img" alt="" />
+            <h5 class="forecast-item-temp">32 &#xb0;C</h5>
+          </div>
+          <div class="forecast-item">
+            <h5 class="forecast-item-date">14 Jan</h5>
+            <img src="assets/images/weather/thunderstorm.svg" class="forecast-item-img" alt="" />
+            <h5 class="forecast-item-temp">32 &#xb0;C</h5>
+          </div>
+        </section>
+      </div>
+
+      <div class="search-message-wrapper"></div>
+
+      <div class="bottom-line"></div>
     </main>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>
