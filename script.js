@@ -6,6 +6,7 @@ const searchCitySection = document.querySelector(".search-city");
 const mainSection = document.querySelector(".main-section");
 
 const cityText = document.querySelector(".city-txt");
+const countryText = document.querySelector(".country-txt");
 const currentDateText = document.querySelector(".date-txt");
 const tempText = document.querySelector(".temp-txt");
 const summaryText = document.querySelector(".summary-txt");
@@ -79,12 +80,24 @@ async function updateWeatherInfo(city) {
 
   const {
     name: searchedCity,
+    sys: { country },
     main: { temp, humidity },
     weather: [{ id, main }],
     wind: { speed },
   } = weatherData;
 
-  cityText.textContent = searchedCity;
+  console.log(country);
+
+  const getCountryName = (code) => {
+    const regionName = new Intl.DisplayNames(['en'], { type: 'region' });
+    return regionName.of(code);
+  };
+
+  const countryName = getCountryName(country);
+
+  console.log(countryName);
+
+  cityText.textContent = `${searchedCity}, ${countryName}`;
   tempText.textContent = Math.round(temp) + " °C";
   summaryText.textContent = main;
   humidityValue.textContent = humidity + "%";
