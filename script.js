@@ -1,82 +1,98 @@
-const cityInput = document.querySelector(".search-input");
-const searchBtn = document.querySelector(".search-btn");
+const cityInput = document.querySelector('.search-input');
+const searchBtn = document.querySelector('.search-btn');
 
-const notFoundSection = document.querySelector(".city-not-found");
-const searchCitySection = document.querySelector(".search-city");
-const mainSection = document.querySelector(".main-section");
+const notFoundSection = document.querySelector('.city-not-found');
+const searchCitySection = document.querySelector('.search-city');
+const mainSection = document.querySelector('.main-section');
 
-const cityText = document.querySelector(".city-txt");
-const countryText = document.querySelector(".country-txt");
-const currentDateText = document.querySelector(".date-txt");
-const tempText = document.querySelector(".temp-txt");
-const summaryText = document.querySelector(".summary-txt");
-const humidityValue = document.querySelector(".humidity-value");
-const windSpeedValue = document.querySelector(".wind-speed-value");
-const weatherSummaryImg = document.querySelector(".weather-summary-img");
+const cityText = document.querySelector('.city-txt');
+const countryText = document.querySelector('.country-txt');
+const currentDateText = document.querySelector('.date-txt');
+const tempText = document.querySelector('.temp-txt');
+const summaryText = document.querySelector('.summary-txt');
+const humidityValue = document.querySelector('.humidity-value');
+const windSpeedValue = document.querySelector('.wind-speed-value');
+const weatherSummaryImg = document.querySelector('.weather-summary-img');
 
-const forecastItemContainer = document.querySelector(".weather-forecast-container");
+const forecastItemContainer = document.querySelector('.weather-forecast-container');
 
-// Open Weather Map API Key
-const apiKey = "6ee722d5c9092065e5173263453a299a";
+const apiKey = '6ee722d5c9092065e5173263453a299a';
 
-// Event Listener Functions for Seacrh Bar
-searchBtn.addEventListener("click", () => {
-  if (cityInput.value.trim() != "") {
+searchBtn.addEventListener('click', () => {
+  if (cityInput.value.trim() != '') {
     updateWeatherInfo(cityInput.value);
-    // cityInput.value = '';
     cityInput.blur();
   }
 });
 
-cityInput.addEventListener("keydown", (event) => {
-  if (event.key == "Enter" && cityInput.value.trim() != "") {
+cityInput.addEventListener('keydown', (event) => {
+  if (event.key == 'Enter' && cityInput.value.trim() != '') {
     updateWeatherInfo(cityInput.value);
-    // cityInput.value = '';
     cityInput.blur();
   }
 });
 
-// for more details, see: https://openweathermap.org/weather-conditions
 function getWeatherImg(id) {
-  if (id <= 232) return "thunderstorm.svg";
-  if (id <= 321) return "drizzle.svg";
-  if (id <= 531) return "rain.svg";
-  if (id <= 622) return "snow.svg";
-  if (id <= 781) return "atmosphere.svg";
-  if (id == 800) return "clear.svg";
-  if (id <= 804) return "clouds.svg";
+  if (id <= 232) return 'thunderstorm.svg';
+  if (id <= 321) return 'drizzle.svg';
+  if (id <= 531) return 'rain.svg';
+  if (id <= 622) return 'snow.svg';
+  if (id <= 781) return 'atmosphere.svg';
+  if (id == 800) return 'clear.svg';
+  if (id <= 804) return 'clouds.svg';
 }
 
 function getCurrentDate() {
   const currentDate = new Date();
-  const options = {
-    weekday: "long",
-    day: "2-digit",
-    month: "short",
-    year: "2-digit",
+
+  const getDaySuffix = (day) => {
+    if (day > 3 && day < 21) return 'th';
+    switch (day % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
   };
 
-  return currentDate.toLocaleDateString("en-GB", options);
+  const weekday = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
+  const day = currentDate.getDate();
+  const month = currentDate.toLocaleDateString('en-US', { month: 'long' });
+  const year = currentDate.getFullYear();
+
+  return `${weekday}, ${month} ${day}${getDaySuffix(day)} ${year}`;
 }
 
-// Fetch data from openweathermap.org
+function getCountryName(code) {
+  const regionName = new Intl.DisplayNames(['en'], { type: 'region' });
+  return regionName.of(code);
+}
+
 async function fetchData(endPoint, city) {
-  const apiUrl = `https://api.openweathermap.org/data/2.5/${endPoint}?q=${city}&appid=${apiKey}&units=metric`;
+  try {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/${endPoint}?q=${city}&appid=${apiKey}&units=metric`;
+    const response = await fetch(apiUrl);
 
-  const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
-  return response.json();
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
 }
 
 async function updateWeatherInfo(city) {
-  const weatherData = await fetchData("weather", city);
+  const weatherData = await fetchData('weather', city);
 
-  if (weatherData.cod != 200) {
+  // console.log(weatherData);
+
+  if (!weatherData || weatherData.cod != 200) {
     showDisplaySection(notFoundSection);
     return;
   }
-
-  console.log(weatherData);
 
   const {
     name: searchedCity,
@@ -86,22 +102,13 @@ async function updateWeatherInfo(city) {
     wind: { speed },
   } = weatherData;
 
-  console.log(country);
-
-  const getCountryName = (code) => {
-    const regionName = new Intl.DisplayNames(['en'], { type: 'region' });
-    return regionName.of(code);
-  };
-
   const countryName = getCountryName(country);
 
-  console.log(countryName);
-
   cityText.textContent = `${searchedCity}, ${countryName}`;
-  tempText.textContent = Math.round(temp) + " °C";
+  tempText.textContent = Math.round(temp) + ' °C';
   summaryText.textContent = main;
-  humidityValue.textContent = humidity + "%";
-  windSpeedValue.textContent = speed + " m/s";
+  humidityValue.textContent = humidity + '%';
+  windSpeedValue.textContent = speed + ' m/s';
 
   weatherSummaryImg.src = `assets/images/weather/${getWeatherImg(id)}`;
   currentDateText.textContent = getCurrentDate();
@@ -112,12 +119,14 @@ async function updateWeatherInfo(city) {
 }
 
 async function updateForecastInfo(city) {
-  const forescastsData = await fetchData("forecast", city);
+  const forescastsData = await fetchData('forecast', city);
 
-  const timeTaken = "12:00:00";
-  const todayDate = new Date().toISOString().split("T")[0];
+  if (!forescastsData) return;
 
-  forecastItemContainer.innerHTML = "";
+  const timeTaken = '12:00:00';
+  const todayDate = new Date().toISOString().split('T')[0];
+
+  forecastItemContainer.innerHTML = '';
 
   forescastsData.list
     .filter((forecastsWeather) => forecastsWeather.dt_txt.includes(timeTaken) && !forecastsWeather.dt_txt.includes(todayDate))
@@ -136,7 +145,7 @@ function updateForecastsItems(weatherData) {
   const dateOption = {
     day: '2-digit',
     month: 'short'
-  }
+  };
 
   const forecastDate = dateTaken.toLocaleDateString('en-US', dateOption);
 
@@ -148,11 +157,11 @@ function updateForecastsItems(weatherData) {
     </div>
   `;
 
-  forecastItemContainer.insertAdjacentHTML("beforeend", forecastItem);
+  forecastItemContainer.insertAdjacentHTML('beforeend', forecastItem);
 }
 
 function showDisplaySection(section) {
-  [mainSection, searchCitySection, notFoundSection].forEach((section) => (section.style.display = "none"));
+  [mainSection, searchCitySection, notFoundSection].forEach((section) => (section.style.display = 'none'));
 
-  section.style.display = "flex";
+  section.style.display = 'flex';
 }
