@@ -8,7 +8,6 @@ const searchCitySection = document.querySelector('.search-city');
 const mainSection = document.querySelector('.main-section');
 
 const cityText = document.querySelector('.city-txt');
-const countryText = document.querySelector('.country-txt');
 const currentDateText = document.querySelector('.date-txt');
 const tempText = document.querySelector('.temp-txt');
 const summaryText = document.querySelector('.summary-txt');
