@@ -26,10 +26,10 @@ This app uses the [OpenWeather API](https://openweathermap.org/api) to retrieve 
 ## 🗝️ API Key Configuration
 1. Sign up for an account at [OpenWeather](https://openweathermap.org/).  
 2. Get your API key from the dashboard.  
-3. Open the `script.js` file and insert your API key in the following section:  
+3. Create `config.js` file on the project's root directory and insert your API key in the following section:  
 
     ```javascript
-    const apiKey = 'YOUR_API_KEY';
+    export const API_KEY = 'YOUR_API_KEY';
     ```  
 
 
