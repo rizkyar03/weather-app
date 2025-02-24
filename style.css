@@ -103,6 +103,14 @@ main {
     font-size: 1.15rem;
 }
 
+.city-txt {
+    font-weight: bold;
+}
+
+.date-txt {
+    opacity: 80%;
+}
+
 /* -------------------------------------------------------------------------- */
 
 
@@ -123,6 +131,11 @@ main {
 .weather-summary-info {
     /* border: 1px solid; */
     font-size: 1.3rem;
+}
+
+.summary-txt {
+    /* font-size: 1.1rem; */
+    opacity: 80%;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -154,6 +167,10 @@ main {
     display: flex;
     flex-direction: column;
     gap: 3px;
+}
+
+.humidity-value, .wind-speed-value {
+    opacity: 80%;
 }
 
 /* -------------------------------------------------------------------------- */
