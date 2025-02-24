@@ -1,3 +1,5 @@
+import { API_KEY } from './config.js'
+
 const cityInput = document.querySelector('.search-input');
 const searchBtn = document.querySelector('.search-btn');
 
@@ -16,7 +18,7 @@ const weatherSummaryImg = document.querySelector('.weather-summary-img');
 
 const forecastItemContainer = document.querySelector('.weather-forecast-container');
 
-const apiKey = '6ee722d5c9092065e5173263453a299a';
+const apiKey = API_KEY;
 
 searchBtn.addEventListener('click', () => {
   if (cityInput.value.trim() != '') {
