@@ -18,6 +18,7 @@ const weatherSummaryImg = document.querySelector('.weather-summary-img');
 
 const forecastItemContainer = document.querySelector('.weather-forecast-container');
 
+console.log(API_KEY);
 const apiKey = API_KEY;
 
 searchBtn.addEventListener('click', () => {
