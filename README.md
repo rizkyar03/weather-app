@@ -6,7 +6,7 @@ This Simple Weather App is built using **HTML**, **CSS**, and **JavaScript** to 
 ✅ Displays current temperature, humidity, wind speed, and weather conditions.  
 ✅ Weather search by city name.  
 ✅ Supports weather icons according to conditions.  
-✅ User-friendly design.  
+✅ Responsive and User-friendly design.  
 
 ## 🛠️ Technologies Used
 - **HTML**: Basic structure of the app.  
