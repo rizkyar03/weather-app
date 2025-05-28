@@ -11,7 +11,8 @@ This Simple Weather App is built using **HTML**, **CSS**, and **JavaScript** to 
 ## 🛠️ Technologies Used
 - **HTML**: Basic structure of the app.  
 - **CSS**: Styling and layout of the app.  
-- **JavaScript**: Application logic and fetching data from the weather API.  
+- **JavaScript**: Application logic and fetching data from the weather API.
+- **Vercell**: Deployment.  
 
 ## 🌐 API
 This app uses the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data.  
