@@ -35,4 +35,6 @@ This app uses the [OpenWeather API](https://openweathermap.org/api) to retrieve 
 
 
 ---
-This project inspired by CodeArry
+
+
+-- This project inspired by CodeArry --
